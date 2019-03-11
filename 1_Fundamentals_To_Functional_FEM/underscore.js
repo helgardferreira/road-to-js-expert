@@ -1,7 +1,6 @@
 const _ = {};
 
 _.each = (list, cb) => {
-  // check to see if isArray
   if (Array.isArray(list)) {
     // loop through the list
     for (const [index, val] of list.entries()) {
@@ -15,6 +14,26 @@ _.each = (list, cb) => {
       if (Object.prototype.hasOwnProperty.call(list, key)) {
         cb(list[key], key, list);
       }
+    }
+  } else {
+    throw new Error('List is not an Array or Object!');
+  }
+};
+
+_.eachRight = (list, cb) => {
+  if (Array.isArray(list)) {
+    // loop through the list
+    for (let i = list.length - 1; i >= 0; i -= 1) {
+      // call the callback with a list item
+      cb(list[i], i, list);
+    }
+  } else if (typeof list === 'object') {
+    // loop through the list
+    const keyArr = Object.keys(list);
+    for (let keyIndex = keyArr.length - 1; keyIndex >= 0; keyIndex -= 1) {
+      // call the callback with a list item
+      const key = keyArr[keyIndex];
+      cb(list[key], key, list);
     }
   } else {
     throw new Error('List is not an Array or Object!');
@@ -101,6 +120,16 @@ _.each(['d', 'e', 'f'], (val, index, arr) => {
 
 console.log('_.each() example (object):');
 _.each({ a: 1, b: 2, c: 3 }, (val, key, obj) => {
+  console.log(val, key, obj);
+});
+
+console.log('_.eachRight() example (array):');
+_.eachRight(['d', 'e', 'f'], (val, index, arr) => {
+  console.log(val, index, arr);
+});
+
+console.log('_.eachRight() example (object):');
+_.eachRight({ a: 1, b: 2, c: 3 }, (val, key, obj) => {
   console.log(val, key, obj);
 });
 
