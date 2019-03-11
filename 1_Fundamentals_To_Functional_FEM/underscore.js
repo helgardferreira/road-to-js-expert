@@ -16,44 +16,54 @@ _.each = (list, cb) => {
         cb(list[key], key, list);
       }
     }
+  } else {
+    throw new Error('List is not an Array or Object!');
   }
 };
 
-// TODO maybe add object support
 _.map = (list, cb) => {
   // create an empty array to store
-  const tempArr = [];
-  // check if isArray
+  const tempList = Array.isArray(list) ? [] : {};
+  // loop
+  // Map array
   if (Array.isArray(list)) {
-    // loop
     _.each(list, (val, index, arr) => {
-      tempArr.push(cb(val, index, arr));
+      tempList.push(cb(val, index, arr));
+    });
+  } else if (typeof list === 'object') {
+    _.each(list, (val, key, obj) => {
+      tempList[key] = cb(val, key, obj);
     });
   } else {
-    throw new Error('List is not an array!');
+    throw new Error('List is not an Array or Object!');
   }
   // return array
-  return tempArr;
+  return tempList;
 };
 
-// TODO maybe add object support
 _.filter = (list, cb) => {
-  // create tempArray
-  const tempArray = [];
-  // check to see if isArray
+  // create tempList
+  const tempList = Array.isArray(list) ? [] : {};
+  // iterate through list
   if (Array.isArray(list)) {
-    // iterate through array
-    _.each(list, (val, index, arr) => {
+    _.each(list, (val, index, ls) => {
       // return positive matches for callback
-      if (cb(val, index, arr) === true) {
-        tempArray.push(val);
+      if (cb(val, index, ls) === true) {
+        tempList.push(val);
+      }
+    });
+  } else if (typeof list === 'object') {
+    _.each(list, (val, index, ls) => {
+      // return positive matches for callback
+      if (cb(val, index, ls) === true) {
+        tempList[index] = val;
       }
     });
   } else {
-    throw new Error('List is not an array!');
+    throw new Error('List is not an Array or Object!');
   }
 
-  return tempArray;
+  return tempList;
 };
 
 // VERY SIMPLE Array.from()
@@ -61,6 +71,9 @@ _.from = arr => Array.prototype.slice.call(arr);
 // console.log(_.from([1, 2, 3, 4]));
 
 _.reduce = (list, cb, initial) => {
+  if (!Array.isArray(list) && typeof list !== 'object') {
+    throw new Error('List is not an Array or Object!');
+  }
   // check for initial
   let accumulator;
   if (initial === undefined) {
@@ -72,9 +85,9 @@ _.reduce = (list, cb, initial) => {
     }
   } else accumulator = initial;
 
-  // iterate through array
+  // iterate through list
   _.each(list, (val, index, array) => {
-    // apply callback && reduce array
+    // apply callback && reduce list
     accumulator = cb(accumulator, val, index, array);
   });
 
@@ -91,11 +104,21 @@ _.each({ a: 1, b: 2, c: 3 }, (val, key, obj) => {
   console.log(val, key, obj);
 });
 
-console.log('_.map() example:', _.map([1, 2, 3, 4, 5], val => val + 1));
+console.log('_.map() example(array):', _.map([1, 2, 3, 4, 5], val => val + 1));
 
 console.log(
-  '_.filter() example:',
+  '_.map() example(object):',
+  _.map({ a: 1, b: 2, c: 3, d: 4 }, (val, key) => val + key)
+);
+
+console.log(
+  '_.filter() example (array):',
   _.filter([1, 2, 3, 4, 5, 6], val => val % 2 !== 0)
+);
+
+console.log(
+  '_.filter() example (object):',
+  _.filter({ a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 }, val => val % 2 === 0)
 );
 
 console.log(
