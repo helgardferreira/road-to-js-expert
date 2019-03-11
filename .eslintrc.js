@@ -19,5 +19,7 @@ module.exports = {
     'no-param-reassign': 'off',
     'comma-dangle': 'off',
     'no-restricted-syntax': 'off',
+    'object-curly-newline': 'off',
+    'wrap-iife': 'off',
   },
 };
