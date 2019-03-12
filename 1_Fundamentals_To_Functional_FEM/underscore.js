@@ -89,21 +89,14 @@ _.filter = (list, cb) => {
 _.from = arr => Array.prototype.slice.call(arr);
 // console.log(_.from([1, 2, 3, 4]));
 
-_.reduce = (list, cb, initial) => {
+_.reduce = (
+  list,
+  cb,
+  accumulator = Array.isArray(list) === true ? list[0] : {}
+) => {
   if (!Array.isArray(list) && typeof list !== 'object') {
     throw new Error('List is not an Array or Object!');
   }
-  // check for initial
-  let accumulator;
-  if (initial === undefined) {
-    if (Array.isArray(list)) [accumulator] = list;
-    else {
-      throw new Error(
-        'Initial value must be defined when reduce is used on an object'
-      );
-    }
-  } else accumulator = initial;
-
   // iterate through list
   _.each(list, (val, index, array) => {
     // apply callback && reduce list
@@ -157,12 +150,8 @@ console.log(
 
 console.log(
   '_.reduce() example (complex):',
-  _.reduce(
-    { a: 1, b: 2, c: 1 },
-    (result, value, key) => {
-      (result[value] || (result[value] = [])).push(key);
-      return result;
-    },
-    {}
-  )
+  _.reduce({ a: 1, b: 2, c: 1 }, (result, value, key) => {
+    (result[value] || (result[value] = [])).push(key);
+    return result;
+  })
 );
