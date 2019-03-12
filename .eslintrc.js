@@ -21,5 +21,7 @@ module.exports = {
     'no-restricted-syntax': 'off',
     'object-curly-newline': 'off',
     'wrap-iife': 'off',
+    'operator-linebreak': 'off',
+    'no-nested-ternary': 'off',
   },
 };
