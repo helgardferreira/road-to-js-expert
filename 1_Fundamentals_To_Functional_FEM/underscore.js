@@ -140,3 +140,5 @@ _.reduceRight = (list, cb, initial) => {
 
   return accumulator;
 };
+
+module.exports = Object.freeze(_);
