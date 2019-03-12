@@ -89,22 +89,59 @@ _.filter = (list, cb) => {
 _.from = arr => Array.prototype.slice.call(arr);
 // console.log(_.from([1, 2, 3, 4]));
 
-_.reduce = (
-  list,
-  cb,
-  accumulator = Array.isArray(list) === true ? list[0] : {}
-) => {
+_.reduce = (list, cb, initial) => {
   if (!Array.isArray(list) && typeof list !== 'object') {
     throw new Error('List is not an Array or Object!');
   }
+
+  const copyList =
+    initial === undefined && Array.isArray(list) ? list.slice(1) : list;
+
+  let accumulator;
+  accumulator =
+    initial === undefined
+      ? Array.isArray(list) === true
+        ? list[0]
+        : {}
+      : initial;
+
   // iterate through list
-  _.each(list, (val, index, array) => {
+  _.each(copyList, (val, index, array) => {
     // apply callback && reduce list
     accumulator = cb(accumulator, val, index, array);
   });
 
   return accumulator;
 };
+
+_.reduceRight = (list, cb, initial) => {
+  if (!Array.isArray(list) && typeof list !== 'object') {
+    throw new Error('List is not an Array or Object!');
+  }
+
+  const copyList =
+    initial === undefined && Array.isArray(list)
+      ? list.slice(0, list.length - 1)
+      : list;
+
+  let accumulator;
+  accumulator =
+    initial === undefined
+      ? Array.isArray(list) === true
+        ? list[list.length - 1]
+        : {}
+      : initial;
+
+  // iterate through list
+  _.eachRight(copyList, (val, index, array) => {
+    // apply callback && reduce list
+    accumulator = cb(accumulator, val, index, array);
+  });
+
+  return accumulator;
+};
+
+const lem = [1, 2, 3, 4, 5];
 
 console.log('_.each() example (array):');
 _.each(['d', 'e', 'f'], (val, index, arr) => {
@@ -145,12 +182,35 @@ console.log(
 
 console.log(
   '_.reduce() example (simple):',
-  _.reduce([1, 2, 3, 4, 5], (accumulator, current) => accumulator + current, 0)
+  _.reduce(lem, (accumulator, current) => accumulator - current)
+);
+
+console.log(
+  '_.reduce() example (simple with init):',
+  _.reduce(lem, (accumulator, current) => accumulator - current, 0)
 );
 
 console.log(
   '_.reduce() example (complex):',
   _.reduce({ a: 1, b: 2, c: 1 }, (result, value, key) => {
+    (result[value] || (result[value] = [])).push(key);
+    return result;
+  })
+);
+
+console.log(
+  '_.reduceRight() example (simple):',
+  _.reduceRight(lem, (accumulator, current) => accumulator - current)
+);
+
+console.log(
+  '_.reduceRight() example (simple with init):',
+  _.reduceRight(lem, (accumulator, current) => accumulator - current, 0)
+);
+
+console.log(
+  '_.reduceRight() example (complex):',
+  _.reduceRight({ a: 1, b: 2, c: 1 }, (result, value, key) => {
     (result[value] || (result[value] = [])).push(key);
     return result;
   })
