@@ -83,6 +83,25 @@ function union(...arrays) {
   ];
 }
 
+// Extension 5
+function objOfMatches(array1, array2, callback) {
+  return array1.reduce((accumulator, current, index) => {
+    if (array2[index] === callback(current)) {
+      accumulator[current] = array2[index];
+    }
+    return accumulator;
+  }, {});
+}
+
+// Extension 6
+function multiMap(arrVals, arrCallbacks) {
+  return arrVals.reduce((accumulator, current) => {
+    accumulator[current] = arrCallbacks.map(fn => fn(current));
+
+    return accumulator;
+  }, {});
+}
+
 module.exports = Object.freeze({
   addTwo,
   addS,
@@ -92,4 +111,6 @@ module.exports = Object.freeze({
   reduce,
   intersection,
   union,
+  objOfMatches,
+  multiMap,
 });
