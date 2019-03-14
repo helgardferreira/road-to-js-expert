@@ -53,22 +53,20 @@ function reduce(array, callback, initialValue) {
 
 // Extension 3
 function intersection(...arrays) {
-  // reduce() arrays into a Map
-  arrays.reduce((accumulator, current) => {
-    accumulator.push(
-      array.reduce((innerAccumulator, innerCurrent) => {
-        if (!innerAccumulator.get(innerCurrent)) {
-          innerAccumulator.set(innerCurrent, 1);
-        }
-        return innerAccumulator;
-      }, new Map())
-    );
+  const result = arrays.reduce((accumulator, current) => {
+    const tempSet = new Set(current);
 
-    console.log(accumulator);
+    accumulator.forEach((val, index) => {
+      if (!tempSet.has(val)) {
+        accumulator.splice(index, 1);
+      }
+    });
+
+    if (accumulator.length === 0) return [...tempSet];
     return accumulator;
   }, []);
 
-  // return Array.from(tempMap.keys());
+  return result;
 }
 
 const obj = { a: 1, b: 2, c: 3 };
@@ -82,6 +80,7 @@ const array2 = [obj, helloWorld, 1, 'abc', 20];
 const array3 = [1, helloWorld, obj, 'abc', 20];
 
 console.log(intersection(array1, array2, array3));
+intersection(array1, array2, array3)[1]();
 console.log(
   intersection(
     [100, 10, 10, 10, 10, 15, 5, 20],
