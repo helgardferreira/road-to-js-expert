@@ -31,7 +31,6 @@ function forEach(array, callback) {
 //--------------------------------------------------
 
 // Extension 1
-
 function mapWith(array, callback) {
   const tempArray = [];
   forEach(array, (val, index, list) => {
@@ -53,41 +52,36 @@ function reduce(array, callback, initialValue) {
 
 // Extension 3
 function intersection(...arrays) {
-  const result = arrays.reduce((accumulator, current) => {
-    const tempSet = new Set(current);
+  return [
+    ...arrays.reduce((accumulator, current) => {
+      const tempSet = new Set(current);
 
-    accumulator.forEach((val, index) => {
-      if (!tempSet.has(val)) {
-        accumulator.splice(index, 1);
-      }
-    });
+      accumulator.forEach(val => {
+        if (!tempSet.has(val)) {
+          accumulator.delete(val);
+        }
+      });
 
-    if (accumulator.length === 0) return [...tempSet];
-    return accumulator;
-  }, []);
-
-  return result;
+      if (accumulator.size === 0) return tempSet;
+      return accumulator;
+    }, new Set()),
+  ];
 }
 
-const obj = { a: 1, b: 2, c: 3 };
+// Extension 4
+function union(...arrays) {
+  return [
+    ...arrays.reduce((accumulator, current) => {
+      const onion = new Set(current);
 
-function helloWorld() {
-  console.log('Hello World');
+      onion.forEach(val => {
+        accumulator.add(val);
+      });
+
+      return accumulator;
+    }, new Set()),
+  ];
 }
-
-const array1 = ['abc', helloWorld, obj, 20];
-const array2 = [obj, helloWorld, 1, 'abc', 20];
-const array3 = [1, helloWorld, obj, 'abc', 20];
-
-console.log(intersection(array1, array2, array3));
-intersection(array1, array2, array3)[1]();
-console.log(
-  intersection(
-    [100, 10, 10, 10, 10, 15, 5, 20],
-    [15, 100, 88, 10, 5, 7],
-    [100, 10, 15, 5, 20]
-  )
-);
 
 module.exports = Object.freeze({
   addTwo,
@@ -97,4 +91,5 @@ module.exports = Object.freeze({
   mapWith,
   reduce,
   intersection,
+  union,
 });
