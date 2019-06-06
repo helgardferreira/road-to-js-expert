@@ -2,9 +2,10 @@
     "name": "road-to-js-expert",
     "version": "1.0.0",
     "description": "My feeble attempt at becoming an expert at JavaScript.",
-    "dependencies": {},
+    "dependencies": {
+        "eslint": "^5.16.0"
+    },
     "devDependencies": {
-        "eslint": "5.3.0",
         "eslint-config-airbnb": "17.1.0",
         "eslint-plugin-import": "2.14.0",
         "eslint-plugin-jsx-a11y": "6.1.1",
