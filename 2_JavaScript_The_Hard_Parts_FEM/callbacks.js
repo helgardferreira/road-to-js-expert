@@ -85,12 +85,15 @@ function union(...arrays) {
 
 // Extension 5
 function objOfMatches(array1, array2, callback) {
-  return array1.reduce((accumulator, current, index) => {
-    if (array2[index] === callback(current)) {
-      accumulator[current] = array2[index];
+  return array1.reduce((accumulator, current) => {
+    const matchIndex = array2.indexOf(callback(current));
+    if (matchIndex !== -1) {
+      accumulator[current] = array2[matchIndex];
     }
     return accumulator;
   }, {});
+
+  // intersection(array1.map(val => callback(val)), array2);
 }
 
 // Extension 6
