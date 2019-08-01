@@ -91,9 +91,9 @@ function delay(func, wait) {
   };
 }
 
-const myFunc = delay(called, 1000);
+const myDelayedFunc = delay(called, 1000);
 
-myFunc(
+myDelayedFunc(
   'A',
   'Jedi',
   'uses',
