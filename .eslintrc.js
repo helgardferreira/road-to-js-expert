@@ -23,5 +23,6 @@ module.exports = {
     'wrap-iife': 'off',
     'operator-linebreak': 'off',
     'no-nested-ternary': 'off',
+    'spaced-comment': 'off',
   },
 };

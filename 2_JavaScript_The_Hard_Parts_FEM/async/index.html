@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>JS Bin</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Asynchronicity</h1>
+    <p>
+      These challenges will build your understanding of asynchronous events,
+      such as timers, event listeners, and AJAX calls.
+    </p>
+    <p>
+      You will need to remove comments at the beginning of each challenge to
+      work on them, and then comment them out again before moving on.
+    </p>
+    <p>
+      <strong>Important:</strong> Create a clone of this challenge (File>Clone)
+      to keep track of your changes. Create a JSBin account to come back to it
+      later - or write down the new URL.
+    </p>
+    <section id="challenge1">
+      <h3>Challenge 1</h3>
+      <p>
+        Write code that will log to the console, 'I am at the beginning of the
+        code'.
+      </p>
+      <p>
+        Beneath that console log, set a timer (see setTimeout) that will log to
+        the console 'I am in the setTimeout callback function' after 3 seconds
+        (3000 ms)
+      </p>
+      <p>
+        Next, add code to the end of the challenge to log 'I am at the end of
+        the code'. Now re-run the code.
+      </p>
+      <p>
+        Make sure the 'console' and 'output' panes are showing (click the tabs
+        above if not) and then run your code with the 'Run with JS' button.
+      </p>
+      <p>
+        Clear the console. Change the delay time in the time from 3000 ms to 0.
+        Think hard about how the order should change and then run the code
+        again.
+      </p>
+    </section>
+    <section id="challenge2">
+      <h3>Challenge 2</h3>
+      <p>
+        Write code that will log to the console "Interval Hello!" every 2
+        seconds (see setInterval). Use the given
+        <code>clearAllIntervals</code> function to clear all the messages when
+        you have this functionality working.
+      </p>
+      <p>
+        Next, modify your code so that the "Interval Hello!" messages will
+        automatically stop after 10 seconds.
+      </p>
+      <p>
+        Then, modify your code again so that the "Interval Hello!" messages will
+        automatically stop after 10 seconds without use of the
+        <code>clearAllIntervals</code> function, and using
+        <code>clearInterval</code> only once. Perform research if you are unsure
+        how to do this.
+      </p>
+    </section>
+    <section id="challenge3">
+      <h3>Challenge 3</h3>
+      <p>
+        Write a function <code>everyXsecsForYsecs</code> that will accept three
+        arguments: a function, an interval time in seconds, and a total time in
+        seconds. <code>everyXsecsForYsecs</code> should invoke the given
+        function every X times 1000 milliseconds, but then stop invoking the
+        function after Y times 1000 milliseconds.
+      </p>
+      <p>
+        Write function <code>sayHowdy</code> that will log "Howdy" to the
+        console. Then test your <code>everyXsecsForYsecs</code> function by
+        using it to invoke <code>sayHowdy</code> every 1 second for 5 seconds.
+      </p>
+      <p>
+        Now, modify your <code>everyXsecsForYsecs</code> function so it does not
+        use setInterval, but still keeps the same functionality.
+      </p>
+    </section>
+
+    <section id="challenge4">
+      <h3>Challenge 4</h3>
+      <p>
+        Recreate the built in array method, <code>forEach</code>: Write a
+        function that takes as parameters an array, <code>arr</code>, and a
+        callback function, <code>cb</code>. The <code>forEach</code> function
+        will iterate through <code>arr</code> passing each element and its index
+        as arguments to <code>cb</code>.
+      </p>
+      <p>
+        Create a variable named <code>delays</code> and assign to it an array
+        with the numbers 2000, 5000, 0, and 3500 (in that order).
+      </p>
+      <p>
+        Write a function, <code>delayLog</code>, that takes as input a
+        <code>delayTime</code> and an index, <code>i</code>. When invoked, the
+        function should wait <code>delayTime</code> milliseconds before logging
+        to the console, "printing element i" (with "i" replaced with the actual
+        index passed in).
+      </p>
+      <p>
+        Putting it all together, run the <code>delayLog</code> function on each
+        item of the <code>delays</code> array using the
+        <code>forEach</code> function you created.
+      </p>
+    </section>
+    <section id="challenge5">
+      <h3>Challenge 5</h3>
+      <button id="activate">#1: Activate Other Button</button>
+      <button id="color">#2: Change BG Color</button>
+      <p>
+        Write a function <code>changeColor</code> that when invoked will first
+        check if the current page background color is "rgb(221, 238, 255)". If
+        it is, it changes the color to "rgb(255, 238, 221)". If it isn't, it
+        sets the color to "rgb(221, 238, 255)".
+      </p>
+      <p>
+        Add a click event listener to button #1 above (it has an id of
+        "activate"). On click, the button should log to the console "clicked
+        #1". It should also set up a click event listener on button #2 (id of
+        "color"). That listener should log to console "clicked #2" and then call
+        the <code>changeColor</code> function you just created.
+      </p>
+      <p>
+        Clear the console and hit the 'Run with JS' button. Look at what code
+        has run by analyzing the console. Then try to change the background
+        color by clicking button #2. What needs to happen for the button to
+        work?
+      </p>
+    </section>
+    <section id="challenge6">
+      <h3>Challenge 6</h3>
+      <p>
+        In this challenge we are going to simulate an AJAX call to get
+        information from a server. This is not a real AJAX call, but the
+        asynchonicity is similar.
+      </p>
+      <p>
+        Modify the function <code>ajaxSimulate</code> to take an
+        <code>id</code> and a <code>callback</code> function as input. After the
+        <code>database</code> array, set a timer that will pass the element of
+        <code>database</code> whose index matches <code>id</code> to the
+        <code>callback</code> function after 0 ms.
+      </p>
+      <p>
+        Create a second function <code>storeData</code> (outside of
+        ajaxSimulate) that takes <code>data</code> as input and assigns it to
+        the <code>dataReceived</code> variable already defined.
+      </p>
+      <p>
+        Invoke the <code>ajaxSimulate</code> function with an <code>id</code> of
+        1 and the <code>storeData</code> function as the <code>callback</code>.
+        Immediately after, log to the console the value of
+        <code>dataReceived</code>. What do you expect it to be?
+      </p>
+      <p>
+        Without changing anything else, copy-paste the
+        <code>console.log</code> statement somewhere where it will log with the
+        info we need.
+      </p>
+    </section>
+    <section id="challenge7">
+      <h3>Challenge 7</h3>
+      <p>
+        Perform a GET request to the Bandsintown API (hosted by swaggerhub)
+        <a
+          target="”_blank”"
+          href="https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0"
+        >
+          (follow this link and then make sure 'UI' is sellected at the upper
+          left, to read how to use their API)</a
+        >
+        to search for your favorite band. For the 'app_id', use the string
+        'jshp'.
+      </p>
+      <p>
+        Then in the returned JSON, find the URL for the image associated with
+        the band and display it in the DOM.
+      </p>
+      <p>
+        Make sure to use 'https' for JSBIN to allow the request. There is a div
+        with the ID 'ch2' for you to target. If you want, you can view this div
+        by opening the HTML pane, by clicking the HTML button at the top.
+      </p>
+      <div id="ch2"></div>
+    </section>
+    <section id="challenge8">
+      <h3>Challenge 8</h3>
+      <p>
+        Perform a GET request to the Bandsintown API
+        <a
+          target="”_blank”"
+          href="https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0"
+        >
+          (found here)</a
+        >
+        to search and find all events associated with your favorite artist. For
+        the 'app_id', use the string 'jshp'.
+      </p>
+      <p>
+        Then use the returned JSON object to display all the names of the venues
+        hosting the events in a list in the DOM.
+      </p>
+      <p>
+        Make sure to use 'https' for JSBIN to allow the request. There is a div
+        with the ID 'ch3' for you to target.
+      </p>
+      <div id="ch3"></div>
+    </section>
+    <section id="challenge9">
+      <h3>Challenge 9</h3>
+      <p>
+        Perform a GET request to the Bandsintown API
+        <a
+          target="”_blank”"
+          href="https://app.swaggerhub.com/apis/Bandsintown/PublicAPI/3.0.0"
+        >
+          (found here)</a
+        >
+        to search and find all events associated with your favorite artist. For
+        the 'app_id', use the string 'jshp'.
+      </p>
+      <p>
+        This time, use the returned JSON object to select ONLY the events that
+        will happen within the United States, and render them to the DOM.
+      </p>
+      <p>
+        Make sure to use 'https' for JSBIN to allow the request. There is a div
+        with the ID 'ch4' for you to target.
+      </p>
+      <div id="ch4"></div>
+    </section>
+  </body>
+  <script src="async.js"></script>
+</html>
