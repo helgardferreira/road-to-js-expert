@@ -24,5 +24,7 @@ module.exports = {
     'operator-linebreak': 'off',
     'no-nested-ternary': 'off',
     'spaced-comment': 'off',
+    'class-methods-use-this': 'off',
+    'no-proto': 'off',
   },
 };
