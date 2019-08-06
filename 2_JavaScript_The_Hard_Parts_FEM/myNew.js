@@ -1,8 +1,6 @@
 function myNew(constructor, ...args) {
   const value = Object.create(constructor.prototype);
-  constructor.apply(value, args);
-
-  return value;
+  return constructor.apply(value, args) || value;
 }
 
 export default myNew;

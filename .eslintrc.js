@@ -26,5 +26,6 @@ module.exports = {
     'spaced-comment': 'off',
     'class-methods-use-this': 'off',
     'no-proto': 'off',
+    'implicit-arrow-linebreak': 'off',
   },
 };
