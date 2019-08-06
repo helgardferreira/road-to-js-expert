@@ -1,6 +1,6 @@
 function myNew(constructor, ...args) {
   const value = Object.create(constructor.prototype);
-  constructor.call(value, ...args);
+  constructor.apply(value, args);
 
   return value;
 }
