@@ -80,6 +80,7 @@ function personFromConstructor(name, age) {
 }
 
 const mike = personFromConstructor('Mike', 30);
+console.log(mike.__proto__);
 
 // /********* Uncomment these lines to test your work! *********/
 console.log(mike.name); // -> Logs 'Mike'

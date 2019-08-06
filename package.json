@@ -1,25 +1,29 @@
 {
-    "name": "road-to-js-expert",
-    "version": "1.0.0",
-    "description": "My feeble attempt at becoming an expert at JavaScript.",
-    "dependencies": {
-        "eslint": "^5.16.0"
-    },
-    "devDependencies": {
-        "eslint-config-airbnb": "17.1.0",
-        "eslint-plugin-import": "2.14.0",
-        "eslint-plugin-jsx-a11y": "6.1.1",
-        "eslint-plugin-react": "7.11.0"
-    },
-    "scripts": {},
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/helgardferreira/road-to-js-expert.git"
-    },
-    "author": "Helgard Ferreira hrfer3@gmail.com",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/helgardferreira/road-to-js-expert/issues"
-    },
-    "homepage": "https://github.com/helgardferreira/road-to-js-expert#readme"
+  "name": "road-to-js-expert",
+  "version": "1.0.0",
+  "description": "My feeble attempt at becoming an expert at JavaScript.",
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.16.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.1",
+    "eslint-plugin-react": "7.11.0"
+  },
+  "scripts": {
+    "compile": "babel -d out/ 2_JavaScript_The_Hard_Parts_FEM/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helgardferreira/road-to-js-expert.git"
+  },
+  "author": "Helgard Ferreira hrfer3@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/helgardferreira/road-to-js-expert/issues"
+  },
+  "homepage": "https://github.com/helgardferreira/road-to-js-expert#readme"
 }
