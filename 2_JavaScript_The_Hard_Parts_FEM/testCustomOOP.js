@@ -1,5 +1,5 @@
 import myNew from './myNew';
-import PersonClass from './PersonClass';
+import Person from './Person';
 
 function PersonConstructor(name, age) {
   this.name = name;
@@ -13,7 +13,7 @@ PersonConstructor.prototype.introduce = function introduce() {
   console.log(`Hi, my name is ${this.name}`);
 };
 
-class RealPersonClass {
+class RealPerson {
   constructor(name, age) {
     this.name = name;
     this.age = age;
@@ -26,10 +26,10 @@ class RealPersonClass {
     console.log(`Hi, my name is ${this.name}`);
   }
 }
-const realPerson = new RealPersonClass('John', 43);
+const realPerson = new RealPerson('John', 43);
 
 const simPersonConstructor = myNew(PersonConstructor, 'Vicky', 25);
-const simPersonClass = PersonClass('Jim', 65);
+const simPerson = Person('Jim', 65);
 
 // test myNew with constructor
 console.log('---------Constructor---------');
@@ -41,11 +41,11 @@ simPersonConstructor.introduce();
 
 // test custom class
 console.log('------------Class------------');
-console.log(simPersonClass);
-console.log(simPersonClass.name);
-console.log(simPersonClass.age);
-console.log(simPersonClass.__proto__);
-simPersonClass.introduce();
+console.log(simPerson);
+console.log(simPerson.name);
+console.log(simPerson.age);
+console.log(simPerson.__proto__);
+simPerson.introduce();
 
 // control
 console.log('-----------Control-----------');
@@ -70,7 +70,7 @@ PersonConstructorReturn.prototype.introduce = function introduce() {
   console.log(`Hi, my name is ${this.name}`);
 };
 
-class RealPersonClassReturn {
+class RealPersonReturn {
   constructor(name, age) {
     this.name = name;
     this.age = age;
@@ -86,7 +86,7 @@ class RealPersonClassReturn {
     console.log(`Hi, my name is ${this.name}`);
   }
 }
-const realPersonReturn = new RealPersonClassReturn('John', 43);
+const realPersonReturn = new RealPersonReturn('John', 43);
 
 const simPersonConstructorReturn = myNew(PersonConstructorReturn, 'Vicky', 25);
 

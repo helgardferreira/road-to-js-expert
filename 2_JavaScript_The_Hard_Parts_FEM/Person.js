@@ -1,6 +1,6 @@
 import myNew from './myNew';
 
-function PersonClass(...args) {
+function Person(...args) {
   function PersonConstructor(name, age) {
     this.name = name;
     this.age = age;
@@ -19,7 +19,7 @@ function PersonClass(...args) {
   return myNew(PersonConstructor, ...args);
 }
 
-// class PersonClass {
+// class Person {
 //   constructor(name, age) {
 //     this.name = name;
 //     this.age = age;
@@ -33,4 +33,4 @@ function PersonClass(...args) {
 //   }
 // }
 
-export default PersonClass;
+export default Person;
