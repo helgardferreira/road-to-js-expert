@@ -27,5 +27,8 @@ module.exports = {
     'class-methods-use-this': 'off',
     'no-proto': 'off',
     'implicit-arrow-linebreak': 'off',
+    'func-names': 'off',
+    'space-before-function-paren': 'off',
+    'no-plusplus': 'off',
   },
 };
