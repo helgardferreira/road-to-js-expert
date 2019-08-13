@@ -4,7 +4,8 @@
   "description": "My feeble attempt at becoming an expert at JavaScript.",
   "dependencies": {
     "babel-preset-env": "^1.7.0",
-    "eslint": "^5.16.0"
+    "eslint": "^5.16.0",
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
